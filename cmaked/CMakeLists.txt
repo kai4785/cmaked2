@@ -1,8 +1,9 @@
 #
 # CMakeD - CMake module for D Language
 #
-# Copyright (c) 2007, Selman Ulug <selman.ulug@gmail.com>
+# Copyright (c) 2013, Selman Ulug <selman.ulug@gmail.com>
 #                     Tim Burrell <tim.burrell@gmail.com>
+#                     Kai Meyer <kai@gnukai.com>
 #
 # All rights reserved.
 #
@@ -37,9 +38,12 @@ set (PLAT_SRCS
 	Platform/Windows-gdc.cmake
 )
 
-install (FILES ${MOD_SRCS} DESTINATION ${CMAKE_ROOT}/Modules)
-install (FILES ${PLAT_SRCS} DESTINATION ${CMAKE_ROOT}/Modules/Platform)
+install (FILES ${MOD_SRCS} DESTINATION share/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules)
+install (FILES ${PLAT_SRCS} DESTINATION share/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules/Platform)
 
+if(WIN32)
+	set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}")
+endif()
 set(CPACK_PACKAGE_VERSION "1.0.1")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
