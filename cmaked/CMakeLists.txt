@@ -12,8 +12,10 @@
 cmake_minimum_required(VERSION 2.8.1)
 if(${CMAKE_COMMAND} MATCHES "cmake28$")
     project(cmaked28 NONE)
+    set(cmake_dir cmake28)
 else()
     project (cmaked NONE)
+    set(cmake_dir cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
 
 set (MOD_SRCS
@@ -38,8 +40,8 @@ set (PLAT_SRCS
 	Platform/Windows-gdc.cmake
 )
 
-install (FILES ${MOD_SRCS} DESTINATION share/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules)
-install (FILES ${PLAT_SRCS} DESTINATION share/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules/Platform)
+install (FILES ${MOD_SRCS} DESTINATION share/${cmake_dir}/Modules)
+install (FILES ${PLAT_SRCS} DESTINATION share/${cmake_dir}/Modules/Platform)
 
 if(WIN32)
 	set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}")
