@@ -8,10 +8,14 @@
 #
 # See Copyright.txt for details.
 #
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.1)
-PROJECT (cmaked NONE)
+cmake_minimum_required(VERSION 2.8.1)
+if(${CMAKE_COMMAND} MATCHES "cmake28$")
+    project(cmaked28 NONE)
+else()
+    project (cmaked NONE)
+endif()
 
-SET (MOD_SRCS
+set (MOD_SRCS
 	CMakeDCompiler.cmake.in        
 	CMakeDCompilerId.d.in        
 	CMakeDInformation.cmake        
@@ -26,15 +30,15 @@ SET (MOD_SRCS
 	FindPhobos.cmake
 )
 
-SET (PLAT_SRCS
+set (PLAT_SRCS
 	Platform/Linux-dmd.cmake
 	Platform/Linux-gdc.cmake 
 	Platform/Windows-dmd.cmake              
 	Platform/Windows-gdc.cmake
 )
 
-INSTALL (FILES ${MOD_SRCS} DESTINATION ${CMAKE_ROOT}/Modules)
-INSTALL (FILES ${PLAT_SRCS} DESTINATION ${CMAKE_ROOT}/Modules/Platform)
+install (FILES ${MOD_SRCS} DESTINATION ${CMAKE_ROOT}/Modules)
+install (FILES ${PLAT_SRCS} DESTINATION ${CMAKE_ROOT}/Modules/Platform)
 
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
