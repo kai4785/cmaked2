@@ -19,7 +19,16 @@
 # It also loads a system - compiler - processor (or target hardware)
 # specific file, which is mainly useful for crosscompiling and embedded systems.
 
-MESSAGE( "**** Debug Info: Enter CMakeDInformation.cmake" )
+if(CMAKED2_VERBOSE)
+    macro(cmaked2_debug_message)
+        message(${ARGN})
+    endmacro()
+else()
+    macro(cmaked2_debug_message)
+    endmacro()
+endif()
+
+cmaked2_debug_message( "**** Debug Info: Enter CMakeDInformation.cmake" )
 # Load compiler-specific information.
 
 SET( _INCLUDED_FILE 0 )  # reset the indicator if an include occurred.
@@ -47,9 +56,9 @@ IF(CMAKE_SYSTEM_PROCESSOR)
   ENDIF (NOT _INCLUDED_FILE)
 ENDIF(CMAKE_SYSTEM_PROCESSOR)
 
-MESSAGE( "**** Debug Info: CMAKE_SYSTEM_NAME = ${CMAKE_SYSTEM_NAME}" )
-MESSAGE( "**** Debug Info: CMAKE_D_COMPILER_ID = ${CMAKE_D_COMPILER_ID}" )
-MESSAGE( "**** Debug Info: CMAKE_BASE_NAME = ${CMAKE_BASE_NAME}" )
+cmaked2_debug_message( "**** Debug Info: CMAKE_SYSTEM_NAME = ${CMAKE_SYSTEM_NAME}" )
+cmaked2_debug_message( "**** Debug Info: CMAKE_D_COMPILER_ID = ${CMAKE_D_COMPILER_ID}" )
+cmaked2_debug_message( "**** Debug Info: CMAKE_BASE_NAME = ${CMAKE_BASE_NAME}" )
 
 SET( _INCLUDED_FILE 0 )  # reset the indicator if an include occurred.
 
@@ -208,4 +217,4 @@ CMAKE_D_FLAGS_RELEASE
 CMAKE_D_FLAGS_RELWITHDEBINFO
 )
 SET(CMAKE_D_INFORMATION_LOADED 1)
-MESSAGE( "**** Debug Info: Exit CMakeDInformation.cmake" )
+cmaked2_debug_message( "**** Debug Info: Exit CMakeDInformation.cmake" )

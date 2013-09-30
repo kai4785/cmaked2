@@ -11,7 +11,7 @@
 # Modified from CMake 2.6.5 gcc.cmake
 # See http://www.cmake.org/HTML/Copyright.html for details
 #
-MESSAGE( "**** Debug Info: Enter Linux-dmd.cmake" )
+cmaked2_debug_message( "**** Debug Info: Enter Linux-dmd.cmake" )
 
 #SET(DSTDLIB_FLAGS "-version=Phobos")
 IF(CMAKE_D_BUILD_DOCS)
@@ -63,4 +63,4 @@ SET (CMAKE_D_FLAGS_RELWITHDEBINFO_INIT "-O -g -L--export-dynamic ${DDOC_FLAGS}")
 SET (CMAKE_D_CREATE_ASSEMBLY_SOURCE "<CMAKE_D_COMPILER> <FLAGS> -S <SOURCE> -of<ASSEMBLY_SOURCE>")
 #  SET (CMAKE_INCLUDE_SYSTEM_FLAG_D "-isystem ")
 
-MESSAGE( "**** Debug Info: Exit Linux-dmd.cmake" )
+cmaked2_debug_message( "**** Debug Info: Exit Linux-dmd.cmake" )
