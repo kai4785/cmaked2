@@ -43,9 +43,9 @@ set (PLAT_SRCS
 install (FILES ${MOD_SRCS} DESTINATION share/${cmake_dir}/Modules)
 install (FILES ${PLAT_SRCS} DESTINATION share/${cmake_dir}/Modules/Platform)
 
-set(CPACK_PACKAGE_VERSION "1.0.1")
+set(CPACK_PACKAGE_VERSION "1.0.2")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
-set(CPACK_PACKAGE_VERSION_PATCH "1")
+set(CPACK_PACKAGE_VERSION_PATCH "2")
 set(CPACK_PACKAGE_CONTACT "Kai Meyer <kai@gnukai.com>")
 include(CPack)
